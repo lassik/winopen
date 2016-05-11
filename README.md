@@ -11,6 +11,8 @@ in the Finder (the OS X equivalent to Windows Explorer).
 
 [Download `open.exe` from AppVeyor](https://ci.appveyor.com/project/lassik/winopen/build/artifacts) and put it in your `PATH`.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/pry7d7h000i1n099?svg=true)](https://ci.appveyor.com/project/lassik/winopen)
+
 ## Usage ##
 
 This port only covers the most common use case: opening one file using
