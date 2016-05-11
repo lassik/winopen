@@ -32,10 +32,13 @@ static void usage(int exitcode, FILE *stream)
 
 static void open(const wchar_t *filename)
 {
-    int ret;
+    static SHELLEXECUTEINFOW sei;
 
-    ret = (int)ShellExecuteW(0, 0, filename, 0, 0, SW_SHOW);
-    if (ret <= 32)
+    memset(&sei, 0, sizeof(sei));
+    sei.cbSize = sizeof(sei);
+    sei.lpFile = filename;
+    sei.nShow = SW_SHOW;
+    if (!ShellExecuteExW(&sei))
         diesys(L"cannot open file");
 }
 
