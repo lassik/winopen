@@ -9,6 +9,8 @@
 
 #define PROGNAME L"open"
 
+#define COUNTOF(x) (sizeof(x) / sizeof(x[0]))
+
 static void diesys(const wchar_t *msg)
 {
     static wchar_t errbuf[128];
@@ -16,8 +18,8 @@ static void diesys(const wchar_t *msg)
     FormatMessageW(
         FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
         0, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-        errbuf, sizeof(errbuf), 0);
-    errbuf[sizeof(errbuf)-1] = 0;
+        errbuf, COUNTOF(errbuf), 0);
+    errbuf[COUNTOF(errbuf)-1] = 0;
     // There's no newline in the format string because WinAPI error
     // messages end in a newline.
     fwprintf(stderr, L"%s: %s: %s", PROGNAME, msg, errbuf);
